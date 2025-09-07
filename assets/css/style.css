@@ -376,6 +376,40 @@ main {
   animation: fadeIn 0.5s ease-in-out;
 }
 
+/* Skills Section */
+.skills-section { 
+  margin-bottom: 35px; 
+}
+
+.skills-title { 
+  margin-bottom: 20px; 
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.skill-item {
+  color: var(--white-1);
+  background: var(--onyx);
+  font-size: var(--fs-8);
+  font-weight: var(--fw-300);
+  width: max-content;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: var(--transition-1);
+  cursor: pointer;
+}
+
+.skill-item:hover {
+  background: var(--orange-yellow-crayola);
+  color: var(--smoky-black);
+  transform: translateY(-2px);
+}
+
 .info_more-btn {
   position: absolute;
   top: -15px;
