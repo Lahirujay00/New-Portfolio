@@ -157,3 +157,25 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+
+
+// Animated title text switching
+const animatedTitle = document.getElementById('animated-title');
+const titles = ['Web developer', 'Software Engineer', 'Graphic Designer', 'Video Editor'];
+let currentIndex = 0;
+
+function switchTitle() {
+  animatedTitle.classList.remove('fade-in');
+  
+  setTimeout(() => {
+    currentIndex = (currentIndex + 1) % titles.length;
+    animatedTitle.textContent = titles[currentIndex];
+    animatedTitle.classList.add('fade-in');
+  }, 250);
+}
+
+// Start the animation after the page loads
+document.addEventListener('DOMContentLoaded', function() {
+  setInterval(switchTitle, 3000); // Switch every 3 seconds
+});

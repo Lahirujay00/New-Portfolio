@@ -354,6 +354,28 @@ main {
   border-radius: 8px;
 }
 
+.title-animated {
+  position: relative;
+  color: var(--orange-yellow-crayola);
+  font-weight: var(--fw-500);
+}
+
+
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
 .info_more-btn {
   position: absolute;
   top: -15px;
