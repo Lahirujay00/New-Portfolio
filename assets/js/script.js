@@ -239,35 +239,50 @@ for (let i = 0; i < navigationLinks.length; i++) {
     // Save current page
     saveCurrentPage(targetPage);
 
-    // Remove active class from all pages and navigation links first
-    for (let j = 0; j < pages.length; j++) {
-      pages[j].classList.remove("active");
-      console.log(`Removed active from: ${pages[j].dataset.page}`);
+    // Add smooth transition - fade out current page first
+    const currentActivePage = document.querySelector('article[data-page].active');
+    if (currentActivePage) {
+      currentActivePage.style.opacity = '0';
     }
-    for (let k = 0; k < navigationLinks.length; k++) {
-      navigationLinks[k].classList.remove("active");
-    }
-    
-    // Add active class to clicked navigation link
-    this.classList.add("active");
-    console.log(`Navigation "${targetPage}" now active`);
-    
-    // Add active class to corresponding page
-    let pageFound = false;
-    for (let m = 0; m < pages.length; m++) {
-      if (pages[m].dataset.page === targetPage) {
-        pages[m].classList.add("active");
-        console.log(`Activated page: ${targetPage}, classes: ${pages[m].className}`);
-        pageFound = true;
-        break;
+
+    // After fade out, switch pages
+    setTimeout(() => {
+      // Remove active class from all pages and navigation links
+      for (let j = 0; j < pages.length; j++) {
+        pages[j].classList.remove("active");
+        pages[j].style.opacity = '0';
+        console.log(`Removed active from: ${pages[j].dataset.page}`);
       }
-    }
+      for (let k = 0; k < navigationLinks.length; k++) {
+        navigationLinks[k].classList.remove("active");
+      }
+      
+      // Add active class to clicked navigation link
+      this.classList.add("active");
+      console.log(`Navigation "${targetPage}" now active`);
+      
+      // Add active class to corresponding page
+      let pageFound = false;
+      for (let m = 0; m < pages.length; m++) {
+        if (pages[m].dataset.page === targetPage) {
+          pages[m].classList.add("active");
+          // Fade in the new page
+          setTimeout(() => {
+            pages[m].style.opacity = '1';
+          }, 50);
+          console.log(`Activated page: ${targetPage}, classes: ${pages[m].className}`);
+          pageFound = true;
+          break;
+        }
+      }
+      
+      if (!pageFound) {
+        console.log(`No page found for: ${targetPage}`);
+      }
+      
+      window.scrollTo(0, 0);
+    }, 150); // Delay to allow fade out
     
-    if (!pageFound) {
-      console.log(`No page found for: ${targetPage}`);
-    }
-    
-    window.scrollTo(0, 0);
   });
 }
 

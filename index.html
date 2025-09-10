@@ -27,6 +27,7 @@
   <!-- Prevent page flash - run before body loads -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      const pageLoader = document.getElementById('pageLoader');
       const savedPage = localStorage.getItem('currentPage') || 'about';
       
       // Find and activate the correct page
@@ -50,11 +51,28 @@
           link.classList.add('active');
         }
       });
+      
+      // Hide loader after a short delay to ensure smooth transition
+      setTimeout(() => {
+        pageLoader.classList.add('hidden');
+        // Remove loader from DOM after transition completes
+        setTimeout(() => {
+          pageLoader.remove();
+        }, 500);
+      }, 800); // Show loader for 800ms
     });
   </script>
 </head>
 
 <body>
+
+  <!-- Loading Animation -->
+  <div class="page-loader" id="pageLoader">
+    <div style="text-align: center;">
+      <div class="loader-spinner"></div>
+      <div class="loader-text">Loading...</div>
+    </div>
+  </div>
 
   <!--
     - #MAIN
