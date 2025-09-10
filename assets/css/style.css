@@ -7,6 +7,15 @@
  * copyright 2022 @codewithsadee
  */
 
+/* Prevent page flash on load - hide all pages initially */
+article[data-page] {
+  display: none;
+}
+
+/* Show active page only */
+article[data-page].active {
+  display: block;
+}
 
 
 

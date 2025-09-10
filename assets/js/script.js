@@ -224,12 +224,20 @@ pages.forEach((page, index) => {
   console.log(`Page ${index}: data-page="${page.dataset.page}", class="${page.className}"`);
 });
 
+// Function to save current page to localStorage
+function saveCurrentPage(pageName) {
+  localStorage.setItem('currentPage', pageName);
+}
+
 // add event to all nav link
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
     
     const targetPage = this.innerHTML.toLowerCase();
     console.log("Clicked navigation:", targetPage);
+
+    // Save current page
+    saveCurrentPage(targetPage);
 
     // Remove active class from all pages and navigation links first
     for (let j = 0; j < pages.length; j++) {

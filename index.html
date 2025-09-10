@@ -23,6 +23,35 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Prevent page flash - run before body loads -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedPage = localStorage.getItem('currentPage') || 'about';
+      
+      // Find and activate the correct page
+      const pages = document.querySelectorAll('[data-page]');
+      const navLinks = document.querySelectorAll('[data-nav-link]');
+      
+      // Remove active from all
+      pages.forEach(page => page.classList.remove('active'));
+      navLinks.forEach(link => link.classList.remove('active'));
+      
+      // Add active to saved page
+      pages.forEach(page => {
+        if (page.dataset.page === savedPage) {
+          page.classList.add('active');
+        }
+      });
+      
+      // Add active to corresponding nav link
+      navLinks.forEach(link => {
+        if (link.innerHTML.toLowerCase() === savedPage) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
 </head>
 
 <body>
@@ -173,7 +202,7 @@
         <ul class="navbar-list">
 
           <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
+            <button class="navbar-link" data-nav-link>About</button>
           </li>
 
           <li class="navbar-item">
@@ -201,7 +230,7 @@
         - #ABOUT
       -->
 
-      <article class="about  active" data-page="about">
+      <article class="about" data-page="about">
 
         <header>
           <h2 class="h2 article-title">About me</h2>
