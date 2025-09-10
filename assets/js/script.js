@@ -118,6 +118,7 @@ for (let i = 0; i < filterBtn.length; i++) {
 const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
+const formMessage = document.getElementById("form-message");
 
 // add event to all form input field
 for (let i = 0; i < formInputs.length; i++) {
@@ -130,6 +131,82 @@ for (let i = 0; i < formInputs.length; i++) {
       formBtn.setAttribute("disabled", "");
     }
 
+  });
+}
+
+// Add form submission handling with AJAX
+if (form) {
+  form.addEventListener("submit", async function(e) {
+    e.preventDefault(); // Prevent default form submission
+    
+    const submitButton = this.querySelector("[data-form-btn]");
+    const buttonText = submitButton.querySelector("span");
+    const originalText = buttonText.textContent;
+    
+    // Update button to show sending state
+    buttonText.textContent = "Sending...";
+    submitButton.disabled = true;
+    formMessage.style.display = "none";
+    
+    try {
+      // Get form data
+      const formData = new FormData(form);
+      
+      // Send to Formspree via AJAX
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        // Success - show confirmation message
+        formMessage.innerHTML = `
+          <div style="color: var(--vegas-gold); padding: 15px; border: 1px solid var(--vegas-gold); border-radius: 8px; margin-top: 15px; text-align: center;">
+            <ion-icon name="checkmark-circle-outline" style="font-size: 24px; margin-bottom: 8px;"></ion-icon>
+            <p style="margin: 0; font-weight: 500;">Thank you! Your message has been sent successfully.</p>
+            <p style="margin: 5px 0 0 0; font-size: 14px; opacity: 0.8;">I'll get back to you soon!</p>
+          </div>
+        `;
+        formMessage.style.display = "block";
+        
+        // Reset form
+        form.reset();
+        submitButton.setAttribute("disabled", "");
+        
+        // Hide message after 5 seconds
+        setTimeout(() => {
+          formMessage.style.display = "none";
+        }, 5000);
+        
+      } else {
+        throw new Error('Form submission failed');
+      }
+      
+    } catch (error) {
+      // Error - show error message
+      formMessage.innerHTML = `
+        <div style="color: #ff6b6b; padding: 15px; border: 1px solid #ff6b6b; border-radius: 8px; margin-top: 15px; text-align: center;">
+          <ion-icon name="close-circle-outline" style="font-size: 24px; margin-bottom: 8px;"></ion-icon>
+          <p style="margin: 0; font-weight: 500;">Oops! Something went wrong.</p>
+          <p style="margin: 5px 0 0 0; font-size: 14px; opacity: 0.8;">Please try again or contact me directly.</p>
+        </div>
+      `;
+      formMessage.style.display = "block";
+      
+      // Hide error message after 5 seconds
+      setTimeout(() => {
+        formMessage.style.display = "none";
+      }, 5000);
+    }
+    
+    // Reset button
+    buttonText.textContent = originalText;
+    if (form.checkValidity()) {
+      submitButton.removeAttribute("disabled");
+    }
   });
 }
 
