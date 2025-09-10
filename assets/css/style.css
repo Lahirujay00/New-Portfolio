@@ -576,6 +576,25 @@ main {
   margin-top: 8px;
 }
 
+.tech-tag {
+  display: inline-block;
+  background: var(--jet);
+  color: var(--white-2);
+  padding: 6px 12px;
+  margin: 4px;
+  border-radius: 20px;
+  font-size: var(--fs-8);
+  font-weight: var(--fw-500);
+  border: 1px solid var(--onyx);
+  transition: var(--transition-1);
+}
+
+.tech-tag:hover {
+  background: var(--orange-yellow-crayola);
+  color: var(--smoky-black);
+  transform: translateY(-1px);
+}
+
 .project-modal-description {
   color: var(--light-gray);
   font-size: var(--fs-6);
