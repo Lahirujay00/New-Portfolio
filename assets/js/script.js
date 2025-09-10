@@ -212,4 +212,103 @@ document.addEventListener('DOMContentLoaded', function() {
   } else {
     console.log("animated-title element not found");
   }
+  
+  // Project Modal Functionality
+  const projectModalContainer = document.querySelector("[data-project-modal-container]");
+  const projectOverlay = document.querySelector("[data-project-overlay]");
+  const projectModalCloseBtn = document.querySelector("[data-project-modal-close-btn]");
+  
+  // Modal elements
+  const projectModalTitle = document.querySelector("[data-project-modal-title]");
+  const projectModalTech = document.querySelector("[data-project-modal-tech]");
+  const projectModalDescription = document.querySelector("[data-project-modal-description]");
+  const projectModalLive = document.querySelector("[data-project-modal-live]");
+  const projectModalGithub = document.querySelector("[data-project-modal-github]");
+
+  // Project action buttons
+  const projectCards = document.querySelectorAll(".project-card");
+
+  if (projectCards.length > 0 && projectModalContainer) {
+    projectCards.forEach(card => {
+      const detailsBtn = card.querySelector(".details-btn");
+      const liveBtn = card.querySelector(".live-btn");
+      const githubBtn = card.querySelector(".github-btn");
+      
+      // Details button - show modal
+      if (detailsBtn) {
+        detailsBtn.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          const title = card.dataset.projectTitle;
+          const tech = card.dataset.projectTech;
+          const description = card.dataset.projectDescription;
+          const liveUrl = card.dataset.liveUrl;
+          const githubUrl = card.dataset.githubUrl;
+          
+          // Populate modal
+          projectModalTitle.textContent = title;
+          projectModalDescription.querySelector('p').textContent = description;
+          
+          // Create tech tags
+          projectModalTech.innerHTML = '';
+          if (tech) {
+            tech.split(',').forEach(techItem => {
+              const tag = document.createElement('span');
+              tag.className = 'tech-tag';
+              tag.textContent = techItem.trim();
+              projectModalTech.appendChild(tag);
+            });
+          }
+          
+          // Set links
+          projectModalLive.href = liveUrl || '#';
+          projectModalGithub.href = githubUrl || '#';
+          
+          // Show modal
+          projectModalContainer.classList.add('active');
+          projectOverlay.classList.add('active');
+        });
+      }
+      
+      // Live demo button
+      if (liveBtn) {
+        liveBtn.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const liveUrl = card.dataset.liveUrl;
+          if (liveUrl && liveUrl !== '#') {
+            window.open(liveUrl, '_blank');
+          }
+        });
+      }
+      
+      // GitHub button
+      if (githubBtn) {
+        githubBtn.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const githubUrl = card.dataset.githubUrl;
+          if (githubUrl && githubUrl !== '#') {
+            window.open(githubUrl, '_blank');
+          }
+        });
+      }
+    });
+
+    // Close modal functionality
+    function closeProjectModal() {
+      projectModalContainer.classList.remove('active');
+      projectOverlay.classList.remove('active');
+    }
+
+    if (projectModalCloseBtn) {
+      projectModalCloseBtn.addEventListener("click", closeProjectModal);
+    }
+    
+    if (projectOverlay) {
+      projectOverlay.addEventListener("click", closeProjectModal);
+    }
+  }
+  
 });

@@ -530,42 +530,63 @@
           <ul class="project-list">
 
             <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
+              <div class="project-card" 
+                   data-project-title="ICU Management System"
+                   data-project-tech="MERN/Next.js, Firebase, Tailwind CSS"
+                   data-project-description="A web platform for critical care management, featuring patient management, staff scheduling, equipment tracking, and analytics. Includes bed management, discharge workflows, and secure multi-provider authentication."
+                   data-live-url="https://your-icu-demo.com"
+                   data-github-url="https://github.com/yourusername/icu-management">
 
                 <figure class="project-img">
                   <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
+                    <button class="action-icon live-btn" title="Live Demo">
+                      <ion-icon name="globe-outline"></ion-icon>
+                    </button>
+                    <button class="action-icon details-btn" title="View Details">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </button>
+                    <button class="action-icon github-btn" title="GitHub Repo">
+                      <ion-icon name="logo-github"></ion-icon>
+                    </button>
                   </div>
 
                   <img src="./assets/images/project-1.png" alt="ICU Management" loading="lazy">
                 </figure>
 
                 <h3 class="project-title">ICU Management System</h3>
-
                 <p class="project-category">Web development</p>
-
-              </a>
+              </div>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
+                  <li class="project-item active" data-filter-item data-category="web development">
+                    <a href="#" 
+                       class="project-card"
+                       data-project-title="Expense Tracker"
+                       data-project-tech="React, Node.js, MongoDB, Express"
+                       data-project-description="Full-stack expense tracking application with user authentication, budget management, and spending analytics."
+                       data-live-url="https://expense-tracker-demo.com"
+                       data-github-url="https://github.com/username/expense-tracker">
 
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
+                      <figure class="project-img">
+                        <div class="project-item-icon-box">
+                          <a href="#" class="action-icon live-btn" title="Live Demo">
+                            <ion-icon name="globe-outline"></ion-icon>
+                          </a>
+                          <a href="#" class="action-icon details-btn" title="View Details">
+                            <ion-icon name="eye-outline"></ion-icon>
+                          </a>
+                          <a href="#" class="action-icon github-btn" title="GitHub">
+                            <ion-icon name="logo-github"></ion-icon>
+                          </a>
+                        </div>
+                        <img src="./assets/images/project-2.png" alt="expense tracker" loading="lazy">
+                      </figure>
 
-                  <img src="./assets/images/project-2.png" alt="MindfulSpace" loading="lazy">
-                </figure>
+                      <h3 class="project-title">Expense Tracker</h3>
+                      <p class="project-category">Web development</p>
 
-                <h3 class="project-title">AI-Powered Wellness Platform</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
+                    </a>
+                  </li>            <li class="project-item  active" data-filter-item data-category="web development">
               <a href="#">
 
                 <figure class="project-img">
@@ -748,6 +769,46 @@
           </ul>
 
         </section>
+
+        <!--
+          - project details modal
+        -->
+
+        <div class="project-modal-container" data-project-modal-container>
+          <div class="project-overlay" data-project-overlay></div>
+
+          <section class="project-modal">
+            <button class="modal-close-btn" data-project-modal-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+            <div class="project-modal-content">
+              <h3 class="project-modal-title" data-project-modal-title>Project Title</h3>
+              
+              <div class="project-modal-tech">
+                <span class="tech-label">Technologies:</span>
+                <div class="tech-tags" data-project-modal-tech>
+                  <!-- Tech tags will be inserted here -->
+                </div>
+              </div>
+
+              <div class="project-modal-description" data-project-modal-description>
+                <p>Project description will appear here...</p>
+              </div>
+
+              <div class="project-modal-links">
+                <a href="#" class="modal-link live-link" data-project-modal-live>
+                  <ion-icon name="globe-outline"></ion-icon>
+                  <span>Live Demo</span>
+                </a>
+                <a href="#" class="modal-link github-link" data-project-modal-github>
+                  <ion-icon name="logo-github"></ion-icon>
+                  <span>GitHub Repo</span>
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
 
       </article>
 
