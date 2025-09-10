@@ -575,6 +575,11 @@ main {
 .project-modal-tech .tech-tags {
   margin-top: 8px;
 }
+.tech-label {
+  color: var(--light-gray-70);
+  font-size: var(--fs-7);
+  font-weight: var(--fw-400);
+}
 
 .tech-tag {
   display: inline-block;
@@ -589,11 +594,7 @@ main {
   transition: var(--transition-1);
 }
 
-.tech-tag:hover {
-  background: var(--orange-yellow-crayola);
-  color: var(--smoky-black);
-  transform: translateY(-1px);
-}
+
 
 .project-modal-description {
   color: var(--light-gray);
