@@ -1571,6 +1571,221 @@ textarea.form-input::-webkit-resizer { display: none; }
 \*-----------------------------------*/
 
 /**
+ * responsive for very small screens (320px and up)
+ */
+
+@media (max-width: 374px) {
+  
+  /**
+   * REUSED STYLE
+   */
+  
+  html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+  
+  .sidebar, article {
+    padding: 10px;
+    margin: 10px 8px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /**
+   * MAIN
+   */
+   
+  main {
+    margin: 10px 8px;
+    margin-bottom: 75px;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /**
+   * SIDEBAR
+   */
+   
+  .sidebar-info {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  
+  .avatar-box {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .info-content .name {
+    font-size: var(--fs-4);
+    white-space: nowrap;
+  }
+  
+  .info-content .title {
+    font-size: 10px;
+    padding: 2px 8px;
+  }
+  
+  /**
+   * NAVBAR
+   */
+   
+  .navbar-list {
+    padding: 0 5px;
+  }
+  
+  .navbar-link {
+    padding: 15px 5px;
+    font-size: 10px;
+  }
+  
+  /**
+   * ABOUT
+   */
+   
+  .service-list {
+    gap: 15px;
+  }
+  
+  .service-item {
+    padding: 15px;
+  }
+  
+  .skills-list {
+    gap: 8px;
+    word-break: break-word;
+  }
+  
+  .skill-item {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+  
+  /**
+   * PORTFOLIO
+   */
+   
+  .project-img {
+    height: 150px;
+  }
+  
+  .filter-select {
+    padding: 8px 12px;
+    font-size: var(--fs-7);
+  }
+  
+  .project-modal-links {
+    flex-wrap: wrap;
+  }
+  
+  /**
+   * CONTACT
+   */
+   
+  .input-wrapper {
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+   
+  .form-input {
+    padding: 10px 15px;
+    font-size: var(--fs-7);
+  }
+  
+  textarea.form-input {
+    min-height: 80px;
+    height: 100px;
+  }
+  
+  .form-btn {
+    padding: 10px 15px;
+    font-size: var(--fs-7);
+  }
+  
+  .project-modal {
+    margin: 10px 8px;
+    padding: 20px;
+  }
+  
+  .project-modal-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .modal-link {
+    padding: 8px 12px;
+    font-size: var(--fs-8);
+  }
+}
+
+/**
+ * responsive for mobile screens (375px to 449px)
+ */
+
+@media (min-width: 375px) and (max-width: 449px) {
+  
+  html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+  
+  .sidebar, article {
+    padding: 12px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  main {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .sidebar-info {
+    gap: 12px;
+  }
+  
+  .avatar-box {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .info-content .name {
+    font-size: var(--fs-3);
+  }
+  
+  .navbar-link {
+    padding: 18px 8px;
+    font-size: 11px;
+  }
+  
+  .service-item {
+    padding: 20px;
+  }
+  
+  .project-img {
+    height: 180px;
+  }
+  
+  .form-input {
+    padding: 12px 18px;
+  }
+  
+  .form-btn {
+    padding: 12px 18px;
+  }
+  
+  .project-modal-links {
+    flex-wrap: wrap;
+  }
+  
+  .skills-list {
+    word-break: break-word;
+  }
+}
+
+/**
  * responsive larger than 450px screen
  */
 
