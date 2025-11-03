@@ -361,9 +361,20 @@ document.addEventListener('DOMContentLoaded', function() {
             });
           }
           
-          // Set links
-          projectModalLive.href = liveUrl || '#';
-          projectModalGithub.href = githubUrl || '#';
+          // Set links and show/hide based on availability
+          if (liveUrl && liveUrl !== '#') {
+            projectModalLive.href = liveUrl;
+            projectModalLive.style.display = 'flex';
+          } else {
+            projectModalLive.style.display = 'none';
+          }
+          
+          if (githubUrl && githubUrl !== '#') {
+            projectModalGithub.href = githubUrl;
+            projectModalGithub.style.display = 'flex';
+          } else {
+            projectModalGithub.style.display = 'none';
+          }
           
           // Show modal
           projectModalContainer.classList.add('active');
